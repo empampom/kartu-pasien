@@ -2,27 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class PasienController extends Controller
 {
-    public function __invoke(Request $request)
+    public function __invoke($param)
     {
-        $ciphering = "AES-128-CTR";
+        // $ciphering = "AES-128-CTR";
 
-        $iv_length = openssl_cipher_iv_length($ciphering);
-        $options = 0;
+        // $iv_length = openssl_cipher_iv_length($ciphering);
+        // $options = 0;
 
-        $encryption_iv = '1234567891011121';
+        // $encryption_key = "empampom";
 
-        $encryption_key = "empampom";
+        // $decryption_iv = '1234567891011121';
 
-        $decryption_iv = '1234567891011121';
+        // $decryption_key = "empampom";
 
-        $decryption_key = "empampom";
+        // $decryption = openssl_decrypt($request->id, $ciphering, $decryption_key, $options, $decryption_iv);
 
-        $decryption = openssl_decrypt($request->id, $ciphering, $decryption_key, $options, $decryption_iv);
+        $decryption = base64_decode($param);
 
         $arr_request = explode('||', $decryption);
 
